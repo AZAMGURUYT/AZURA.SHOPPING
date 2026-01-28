@@ -1,0 +1,25 @@
+body {
+  margin: 0;
+  font-family: 'Helvetica Neue', sans-serif;
+  color: #111;
+}
+
+section {
+  padding: 80px 10%;
+}
+
+.hero {
+  background: #f7f7f7;
+  text-align: center;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 12px;
+}
