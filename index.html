@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Azura Luxury | Animated Glow Edition</title>
+    <title>Azura | Premium Minimalist</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -11,116 +11,76 @@
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        body { background-color: #050505; color: #ffffff; overflow-x: hidden; scroll-behavior: smooth; }
+        body { background-color: #ffffff; color: #1d1d1f; overflow-x: hidden; scroll-behavior: smooth; }
 
-        /* Navigation Glassmorphism */
+        /* Navbar - Ultra Clean */
         nav { 
-            padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; 
+            padding: 20px 8%; display: flex; justify-content: space-between; align-items: center; 
             position: fixed; width: 100%; z-index: 1000; 
-            background: rgba(5, 5, 5, 0.8); backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            background: rgba(255, 255, 255, 0.8); backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
-        .logo { font-weight: 600; font-size: 1.5rem; letter-spacing: 5px; color: #fff; }
+        .logo { font-weight: 600; font-size: 1.2rem; letter-spacing: 3px; color: #000; }
 
-        /* Hero Section */
+        /* Hero - Calm & Bold */
         .hero { 
             height: 100vh; display: flex; flex-direction: column; justify-content: center; 
-            align-items: center; text-align: center; 
-            background: radial-gradient(circle at center, #111 0%, #050505 100%);
+            align-items: center; text-align: center; background: #fbfbfb;
         }
-        .hero h1 { font-size: clamp(3rem, 12vw, 6.5rem); font-weight: 600; letter-spacing: -2px; }
-
-        /* Rotating Glow Border Container */
-        .glow-box {
-            position: relative;
-            width: fit-content;
-            margin: auto;
-            padding: 5px;
-            background: linear-gradient(0deg, transparent, transparent, #25d366, #25d366);
-            border-radius: 20px;
-            overflow: hidden;
-            animation: rotateBorder 4s linear infinite;
-        }
-
-        .glow-box::before {
-            content: '';
-            position: absolute;
-            inset: -5px;
-            background: linear-gradient(0deg, transparent, transparent, #25d366, #25d366);
-            animation: rotateBorder 4s linear infinite;
-        }
-
-        @keyframes rotateBorder {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Inner Image Styling */
-        .product-image-inner {
-            background: #050505;
-            padding: 10px;
-            border-radius: 15px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .product-image img { 
-            width: 100%; max-width: 400px; 
-            filter: drop-shadow(0 0 20px rgba(37, 211, 102, 0.4));
-            border-radius: 15px;
-            transition: 0.5s ease;
-        }
-
-        /* Continuous Float for the whole box */
-        .float-container {
-            animation: floatAnim 4s ease-in-out infinite;
-        }
-
-        @keyframes floatAnim {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
+        .hero h1 { font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 600; color: #1d1d1f; line-height: 1.1; }
+        .hero p { color: #86868b; font-size: 1.2rem; margin-top: 20px; font-weight: 300; }
 
         /* Product Section */
-        .product-section { padding: 120px 5%; }
+        .product-section { padding: 100px 8%; }
         .product-container { 
-            display: flex; align-items: center; justify-content: space-around; 
-            max-width: 1300px; margin: 0 auto 180px auto; gap: 60px;
+            display: flex; align-items: center; justify-content: space-between; 
+            max-width: 1200px; margin: 0 auto 150px auto; gap: 80px;
         }
         
-        .product-info { flex: 1; padding: 20px; }
-        .product-info h2 { font-size: clamp(2.5rem, 6vw, 3.5rem); margin-bottom: 25px; }
-        .product-info p { font-size: 1.1rem; color: #888; margin-bottom: 35px; line-height: 1.8; }
+        /* Ambient Glow Image Effect */
+        .product-image { 
+            flex: 1.2; position: relative; display: flex; justify-content: center;
+        }
+        .product-image img { 
+            width: 100%; max-width: 450px; z-index: 2;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        /* Background Soft Shadow/Glow */
+        .image-bg-glow {
+            position: absolute; width: 80%; height: 80%;
+            background: radial-gradient(circle, rgba(37, 211, 102, 0.15) 0%, transparent 70%);
+            border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            z-index: 1; filter: blur(40px);
+        }
 
-        /* Luxury Button */
+        .product-info { flex: 1; }
+        .product-info h2 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 20px; font-weight: 600; }
+        .product-info p { font-size: 1.1rem; color: #424245; margin-bottom: 30px; line-height: 1.6; }
+
+        /* Buy Button - Minimalist Premium */
         .buy-btn { 
-            display: inline-flex; align-items: center; padding: 18px 40px; 
-            background: transparent; color: #fff; text-decoration: none; 
-            border: 2px solid #25d366; border-radius: 5px; font-weight: 600;
-            transition: 0.4s; text-transform: uppercase; letter-spacing: 2px;
+            display: inline-flex; align-items: center; padding: 16px 35px; 
+            background: #0071e3; color: #fff; text-decoration: none; 
+            border-radius: 30px; font-weight: 500; font-size: 1rem;
+            transition: 0.3s all;
         }
-        .buy-btn:hover { background: #25d366; color: #000; box-shadow: 0 0 30px rgba(37, 211, 102, 0.5); }
+        .buy-btn:hover { background: #0077ed; transform: scale(1.05); box-shadow: 0 10px 20px rgba(0,113,227,0.2); }
+        .buy-btn i { margin-right: 10px; }
 
-        /* Floating WhatsApp */
+        /* WhatsApp Button */
         .whatsapp-float {
-            position: fixed; bottom: 40px; right: 40px; background: #25d366; color: white;
-            width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center;
-            justify-content: center; font-size: 35px; z-index: 1000;
-            box-shadow: 0 0 20px rgba(37, 211, 102, 0.5);
-            animation: pulse 2s infinite;
+            position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white;
+            width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center;
+            justify-content: center; font-size: 30px; z-index: 1000;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1); transition: 0.3s;
         }
-
-        @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-            70% { transform: scale(1.1); box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-        }
+        .whatsapp-float:hover { transform: translateY(-5px) scale(1.1); }
 
         @media (max-width: 768px) {
-            .product-container { flex-direction: column !important; text-align: center; }
-            .hero h1 { font-size: 3.5rem; }
-            .product-image img { max-width: 300px; }
-            .buy-btn { width: 100%; }
+            .product-container { flex-direction: column !important; text-align: center; gap: 40px; }
+            .hero h1 { font-size: 3rem; }
+            .buy-btn { width: 100%; justify-content: center; }
         }
     </style>
 </head>
@@ -128,46 +88,40 @@
 
     <nav>
         <div class="logo">AZURA.</div>
-        <div style="font-size: 0.8rem; letter-spacing: 2px;">PREMIUM STORE</div>
+        <div style="font-size: 0.9rem; color: #86868b;">Premium Quality</div>
     </nav>
 
     <section class="hero">
-        <h1 data-aos="zoom-in" data-aos-duration="1500">AZURA <br> EXCLUSIVE</h1>
-        <p data-aos="fade-up" data-aos-delay="400">Where Premium meets Perfection.</p>
+        <h1 data-aos="fade-up" data-aos-duration="1200">Quality you can feel.<br>Style you can wear.</h1>
+        <p data-aos="fade-up" data-aos-delay="300" data-aos-duration="1200">The 2026 Collection is here.</p>
     </section>
 
     <section class="product-section">
         
         <div class="product-container">
-            <div class="float-container" data-aos="fade-right" data-aos-duration="1200" data-aos-mirror="true">
-                <div class="glow-box">
-                    <div class="product-image-inner">
-                        <img src="bag front .png" alt="XCLENT BAG">
-                    </div>
-                </div>
+            <div class="product-image" data-aos="fade-right" data-aos-duration="1500" data-aos-mirror="true">
+                <div class="image-bg-glow"></div>
+                <img src="bag front .png" alt="XCLENT BAG">
             </div>
-            <div class="product-info" data-aos="fade-left" data-aos-duration="1200" data-aos-mirror="true">
+            <div class="product-info" data-aos="fade-up" data-aos-duration="1200" data-aos-mirror="true">
                 <h2>The XCLENT</h2>
-                <p>Designed for excellence. A masterpiece of durability and luxury style.</p>
-                <a href="https://wa.me/919560635855?text=I%20want%20to%20order%20The%20XCLENT%20BAG" class="buy-btn" target="_blank">
-                    <i class="fab fa-whatsapp"></i> ORDER NOW
+                <p>Experience the ultimate blend of comfort and luxury. Crafted with premium materials for your daily hustle.</p>
+                <a href="https://wa.me/919560635855?text=I%20want%20to%20order%20The%20XCLENT%20BAG" class="buy-btn">
+                    <i class="fab fa-whatsapp"></i> Buy via WhatsApp
                 </a>
             </div>
         </div>
 
         <div class="product-container" style="flex-direction: row-reverse;"> 
-            <div class="float-container" data-aos="fade-left" data-aos-duration="1200" data-aos-mirror="true">
-                <div class="glow-box">
-                    <div class="product-image-inner">
-                        <img src="GREY FRNT.png" alt="Smart Grey Bag">
-                    </div>
-                </div>
+            <div class="product-image" data-aos="fade-left" data-aos-duration="1500" data-aos-mirror="true">
+                <div class="image-bg-glow" style="background: radial-gradient(circle, rgba(0,113,227,0.1) 0%, transparent 70%);"></div>
+                <img src="GREY FRNT.png" alt="Smart Grey Bag">
             </div>
-            <div class="product-info" data-aos="fade-right" data-aos-duration="1200" data-aos-mirror="true">
-                <h2>Urban Grey</h2>
-                <p>Minimalist design for the modern lifestyle. Effortless style in every move.</p>
-                <a href="https://wa.me/919560635855?text=I%20want%20to%20order%20the%20Smart%20GREY%20Carry%20Bag" class="buy-btn" target="_blank">
-                    <i class="fab fa-whatsapp"></i> ORDER NOW
+            <div class="product-info" data-aos="fade-up" data-aos-duration="1200" data-aos-mirror="true">
+                <h2>Smart Carry</h2>
+                <p>Minimalist design, maximum storage. The only bag you'll ever need for your urban adventures.</p>
+                <a href="https://wa.me/919560635855?text=I%20want%20to%20order%20the%20Smart%20GREY%20Carry%20Bag" class="buy-btn">
+                    <i class="fab fa-whatsapp"></i> Buy via WhatsApp
                 </a>
             </div>
         </div>
@@ -182,9 +136,9 @@
     <script>
         AOS.init({
             duration: 1000,
-            once: false, // Animation baar-baar hogi
-            mirror: true, // Up/Down scroll dono par chalega
-            offset: 100
+            once: false, // Isse animation dobara hogi jab aap scroll karenge
+            mirror: true, // Up scroll par bhi animation refresh hogi
+            offset: 150
         });
     </script>
 </body>
