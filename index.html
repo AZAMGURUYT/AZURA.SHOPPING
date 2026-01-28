@@ -1,62 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>AZURA – Fold With a Snap</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azura Shopping | Order on WhatsApp</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background-color: #ffffff; color: #333; overflow-x: hidden; scroll-behavior: smooth; }
 
-  <link rel="stylesheet" href="style.css">
-  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
-<script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+        nav { padding: 20px 50px; display: flex; justify-content: space-between; align-items: center; position: fixed; width: 100%; z-index: 1000; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); }
+        .logo { font-weight: 600; font-size: 1.5rem; letter-spacing: 2px; }
 
+        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: #fbfbfb; }
+        .hero h1 { font-size: 4rem; font-weight: 600; }
+
+        .product-section { padding: 80px 20px; }
+        .product-container { display: flex; align-items: center; justify-content: space-around; max-width: 1200px; margin: 0 auto 150px auto; }
+        .product-image img { width: 100%; max-width: 400px; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.1)); }
+        .product-info { width: 45%; }
+        .product-info h2 { font-size: 2.5rem; margin-bottom: 15px; }
+
+        /* Buy Button Styling */
+        .buy-btn { 
+            display: inline-block; padding: 12px 25px; background: #25d366; color: white; 
+            text-decoration: none; border-radius: 5px; font-weight: bold; margin-top: 20px;
+            transition: 0.3s; border: none;
+        }
+        .buy-btn:hover { background: #128c7e; transform: translateY(-3px); }
+        .buy-btn i { margin-right: 8px; }
+
+        .contact-section { padding: 100px 20px; background: #f4f4f4; text-align: center; }
+        .contact-form { max-width: 500px; margin: 40px auto; display: flex; flex-direction: column; gap: 15px; }
+        .contact-form input, .contact-form textarea { padding: 15px; border: 1px solid #ddd; border-radius: 8px; }
+        .submit-btn { padding: 15px; background: #222; color: white; border: none; border-radius: 8px; cursor: pointer; }
+
+        .whatsapp-float {
+            position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white;
+            width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center;
+            justify-content: center; font-size: 30px; z-index: 1000; text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .product-container { flex-direction: column !important; text-align: center; }
+            .product-info { width: 100%; margin-top: 30px; }
+            .hero h1 { font-size: 2.5rem; }
+        }
+    </style>
 </head>
 <body>
-  <div class="progress"></div>   
 
+    <nav>
+        <div class="logo">AZURA.</div>
+        <div>
+            <a href="#products" style="text-decoration:none; color:#333; margin-right:20px;">Products</a>
+            <a href="#contact" style="text-decoration:none; color:#333;">Contact</a>
+        </div>
+    </nav>
 
-  <!-- HERO -->
-  <section class="hero">
-    <h1>Designed to Fold<br>With a Snap</h1>
-    <p>Minimal. Smart. Reusable.</p>
-  </section>
+    <section class="hero">
+        <h1 data-aos="fade-down">Premium Choice<br>Premium Style</h1>
+        <p data-aos="fade-up" data-aos-delay="200">Shop your favorite items via WhatsApp.</p>
+    </section>
 
-  <!-- STRUCTURE -->
-  <section class="split">
-    <div class="text">
-      <h3>STRUCTURE</h3>
-      <p>Open / Close</p>
-    </div>
-    <div class="image">
-      <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990" />
-    </div>
-  </section>
+    <section class="product-section" id="products">
+        
+        <div class="product-container">
+            <div class="product-image" data-aos="fade-right">
+                <img src="https://via.placeholder.com/400x500?text=T-Shirt" alt="Product 1">
+            </div>
+            <div class="product-info" data-aos="fade-left">
+                <h2>The Classic Tee</h2>
+                <p>100% Premium Cotton. Har din ke liye best comfort.</p>
+                <a href="https://wa.me/919560635855?text=I%20want%20to%20order%20The%20Classic%20Tee" class="buy-btn" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Buy Now
+                </a>
+            </div>
+        </div>
 
-  <!-- EXPAND -->
-  <section class="split reverse">
-    <div class="text">
-      <h3>FREEDOM</h3>
-      <p>Expand Instantly</p>
-    </div>
-    <div class="image">
-      <img src="https://images.unsplash.com/photo-1585386959984-a41552231693" />
-    </div>
-  </section>
+        <div class="product-container" style="flex-direction: row-reverse;">
+            <div class="product-image" data-aos="fade-left">
+                <img src="https://via.placeholder.com/400x500?text=Smart+Bag" alt="Product 2">
+            </div>
+            <div class="product-info" data-aos="fade-right">
+                <h2>Smart Carry Bag</h2>
+                <p>Easy to fold and carry. Perfect for shopping and travel.</p>
+                <a href="https://wa.me/919560635855?text=I%20want%20to%20order%20the%20Smart%20Carry%20Bag" class="buy-btn" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Buy Now
+                </a>
+            </div>
+        </div>
 
-  <!-- GALLERY -->
-  <section class="gallery">
-    <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f">
-    <img src="https://images.unsplash.com/photo-1593032465171-8a8c84b0d93a">
-    <img src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb">
-  </section>
+        <div class="product-container">
+            <div class="product-image" data-aos="fade-right">
+                <img src="https://via.placeholder.com/400x500?text=Hoodie" alt="Product 3">
+            </div>
+            <div class="product-info" data-aos="fade-left">
+                <h2>Minimalist Hoodie</h2>
+                <p>Stay warm and stylish with our limited edition hoodie.</p>
+                <a href="https://wa.me/919560635855?text=I%20want%20to%20order%20the%20Minimalist%20Hoodie" class="buy-btn" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Buy Now
+                </a>
+            </div>
+        </div>
 
-  <!-- FOOTER -->
-  <footer>
-    <p>© 2026 AZURA.SHOPPING</p>
-  </footer>
+    </section>
 
-  <script src="script.js"></script>
+    <section class="contact-section" id="contact">
+        <h2 data-aos="fade-up">Message Us</h2>
+        <form class="contact-form" action="https://formsubmit.co/azama4784@gmail.com" method="POST">
+            <input type="text" name="name" placeholder="Full Name" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <textarea name="message" rows="5" placeholder="Message..." required></textarea>
+            <button type="submit" class="submit-btn">Send Email</button>
+        </form>
+    </section>
+
+    <footer style="padding: 30px; text-align: center;">
+        <p>&copy; 2026 AZURA SHOPPING | 9560635855</p>
+    </footer>
+
+    <a href="https://wa.me/919560635855" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init({ duration: 1200 });</script>
 </body>
 </html>
