@@ -1,25 +1,90 @@
-body {
+* {
   margin: 0;
-  font-family: 'Helvetica Neue', sans-serif;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
   color: #111;
+  background: #fff;
 }
 
-section {
-  padding: 80px 10%;
-}
-
+/* HERO */
 .hero {
-  background: #f7f7f7;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
 }
 
+.hero h1 {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.hero p {
+  margin-top: 20px;
+  color: #666;
+}
+
+/* SPLIT SECTIONS */
+.split {
+  display: flex;
+  min-height: 100vh;
+}
+
+.split.reverse {
+  flex-direction: row-reverse;
+}
+
+.text {
+  flex: 1;
+  padding: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.text h3 {
+  letter-spacing: 2px;
+  font-size: 14px;
+  color: #888;
+}
+
+.text p {
+  margin-top: 10px;
+  font-size: 28px;
+}
+
+.image {
+  flex: 1;
+}
+
+.image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* GALLERY */
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
 }
 
 .gallery img {
   width: 100%;
-  border-radius: 12px;
+  height: 400px;
+  object-fit: cover;
+}
+
+/* FOOTER */
+footer {
+  padding: 40px;
+  text-align: center;
+  color: #777;
 }
