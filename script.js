@@ -16,6 +16,19 @@ gsap.from(".hero p", {
   ease: "power3.out"
 });
 
+.image {
+  overflow: hidden;
+}
+
+.image img {
+  transition: transform 1.2s ease;
+}
+
+.image:hover img {
+  transform: scale(1.08);
+}
+
+
 // Split sections
 gsap.utils.toArray(".split").forEach(section => {
   gsap.from(section.querySelector(".text"), {
