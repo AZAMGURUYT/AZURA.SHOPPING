@@ -3,170 +3,192 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Azura Premium | Limited Offer</title>
+    <title>Azura Premium | The Elite Collection</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
+        :root {
+            --gold: #c5a059;
+            --premium-bg: #0a0a0a;
+            --glass: rgba(255, 255, 255, 0.03);
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        body { background-color: #0f0f0f; color: #ffffff; overflow-x: hidden; scroll-behavior: smooth; }
+        body { background-color: var(--premium-bg); color: #ffffff; overflow-x: hidden; scroll-behavior: smooth; }
 
+        /* Sleek Navbar */
         nav { 
-            padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; 
+            padding: 25px 8%; display: flex; justify-content: space-between; align-items: center; 
             position: fixed; width: 100%; z-index: 1000; 
-            background: rgba(15, 15, 15, 0.8); backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
         }
-        .logo { font-weight: 600; font-size: 1.5rem; letter-spacing: 4px; }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.8rem; letter-spacing: 6px; color: var(--gold); }
 
+        /* Minimalist Timer */
         .timer-banner {
-            background: #ff3e3e; color: white; padding: 10px; text-align: center;
-            position: relative; top: 60px; font-weight: bold; z-index: 999;
+            background: linear-gradient(90deg, #000, #1a1a1a, #000); 
+            color: var(--gold); padding: 12px; text-align: center;
+            position: relative; top: 85px; font-size: 0.8rem; letter-spacing: 2px;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.1); font-weight: 300;
         }
+        #countdown { font-weight: 600; color: #fff; }
 
+        /* Hero Section */
         .hero { 
-            height: 60vh; display: flex; flex-direction: column; justify-content: center; 
-            align-items: center; text-align: center; padding-top: 100px;
+            height: 85vh; display: flex; flex-direction: column; justify-content: center; 
+            align-items: center; text-align: center; background: radial-gradient(circle, #151515 0%, #0a0a0a 100%);
         }
-        .hero h1 { font-size: clamp(2.5rem, 10vw, 5rem); text-transform: uppercase; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 12vw, 6rem); line-height: 1; margin-bottom: 15px; font-weight: 700; }
+        .hero p { color: var(--gold); letter-spacing: 5px; font-size: 0.9rem; text-transform: uppercase; opacity: 0.8; }
 
-        /* Sales Pop-up */
+        /* Premium Sales Popup */
         #sales-popup {
-            position: fixed; bottom: 20px; left: 20px; background: white; color: #333;
-            padding: 12px 20px; border-radius: 10px; display: flex; align-items: center;
-            gap: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); z-index: 2000;
-            transform: translateY(150%); transition: 0.5s ease-in-out;
+            position: fixed; bottom: 30px; left: 30px; background: rgba(20, 20, 20, 0.95);
+            color: #fff; padding: 15px 25px; border-radius: 4px; display: flex; align-items: center;
+            gap: 15px; border-left: 3px solid var(--gold); z-index: 2000;
+            transform: translateX(-150%); transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
-        #sales-popup.show { transform: translateY(0); }
-        .popup-icon { color: #25d366; font-size: 1.2rem; }
-        .popup-text { font-size: 0.85rem; font-weight: 500; }
+        #sales-popup.show { transform: translateX(0); }
+        .popup-icon { color: var(--gold); }
 
-        /* Product Section */
-        .product-section { padding: 50px 5%; }
+        /* Product Aesthetic */
+        .product-section { padding: 100px 8%; }
         .product-container { 
-            display: flex; align-items: center; justify-content: space-around; 
-            max-width: 1200px; margin: 0 auto 120px auto; gap: 40px;
+            display: flex; align-items: center; justify-content: space-between; 
+            max-width: 1300px; margin: 0 auto 180px auto; gap: 80px;
         }
-        .product-image img { width: 100%; max-width: 380px; border-radius: 20px; animation: float 4s infinite ease-in-out; }
-        
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+        .product-image { position: relative; flex: 1; }
+        .product-image img { 
+            width: 100%; max-width: 450px; border-radius: 5px;
+            filter: drop-shadow(0 30px 60px rgba(0,0,0,0.8));
+            animation: float 6s infinite ease-in-out;
+        }
+        .product-image::after {
+            content: ''; position: absolute; width: 60%; height: 20px; background: rgba(0,0,0,0.5);
+            bottom: -40px; left: 20%; filter: blur(20px); border-radius: 50%;
+        }
 
-        .price { font-size: 2rem; color: #25d366; margin-bottom: 20px; font-weight: 600; }
+        .product-info { flex: 1; }
+        .product-info h2 { font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 10px; }
+        .price { font-size: 2.2rem; color: var(--gold); margin: 20px 0; font-weight: 300; }
+        .price span { font-size: 1.1rem; text-decoration: line-through; color: #444; margin-left: 15px; }
+
         .buy-btn { 
-            display: inline-flex; align-items: center; padding: 15px 35px; 
-            background: #fff; color: #000; text-decoration: none; font-weight: 600;
-            transition: 0.3s;
+            display: inline-block; padding: 20px 50px; border: 1px solid var(--gold);
+            color: var(--gold); text-decoration: none; font-size: 0.8rem; letter-spacing: 3px;
+            text-transform: uppercase; transition: 0.5s; background: transparent;
         }
-        .buy-btn:hover { background: #25d366; color: #fff; }
+        .buy-btn:hover { background: var(--gold); color: #000; box-shadow: 0 0 30px rgba(197,160,89,0.3); }
 
-        /* FAQ */
-        .faq-section { padding: 80px 10%; background: #151515; }
-        .faq-item { margin-bottom: 20px; border-bottom: 1px solid #333; padding-bottom: 15px; }
-        .faq-item h3 { color: #25d366; font-size: 1.1rem; margin-bottom: 10px; }
-        .faq-item p { color: #aaa; font-size: 0.9rem; }
+        /* FAQ - Luxury Look */
+        .faq-section { padding: 100px 15%; background: #080808; border-top: 1px solid #1a1a1a; }
+        .faq-item { margin-bottom: 40px; }
+        .faq-item h3 { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 1.5rem; margin-bottom: 10px; }
+        .faq-item p { color: #777; line-height: 1.8; font-weight: 300; }
 
-        footer { padding: 40px; text-align: center; border-top: 1px solid #222; color: #666; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-25px); } }
 
         .whatsapp-float {
-            position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white;
-            width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center;
-            justify-content: center; font-size: 32px; z-index: 1000;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            position: fixed; bottom: 40px; right: 40px; background: #25d366; color: white;
+            width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center;
+            justify-content: center; font-size: 24px; z-index: 1000; transition: 0.3s;
         }
+        .whatsapp-float:hover { transform: scale(1.1); }
 
-        @media (max-width: 768px) { 
-            .product-container { flex-direction: column !important; text-align: center; margin-bottom: 80px; } 
+        @media (max-width: 968px) {
+            .product-container { flex-direction: column !important; text-align: center; }
+            .hero h1 { font-size: 3.5rem; }
         }
     </style>
 </head>
 <body>
 
-    <nav><div class="logo">AZURA.</div></nav>
+    <nav><div class="logo">AZURA</div></nav>
 
     <div class="timer-banner">
-        🔥 LIMITED OFFER ENDS IN: <span id="countdown">00:00:00</span>
+        TIMELESS ELEGANCE | OFFER EXPIRES IN: <span id="countdown">00:00:00</span>
     </div>
 
     <div id="sales-popup">
-        <div class="popup-icon"><i class="fas fa-shopping-cart"></i></div>
-        <div class="popup-text" id="popup-content">Loading sales...</div>
+        <div class="popup-icon"><i class="fas fa-crown"></i></div>
+        <div class="popup-text" id="popup-content">Welcome to Azura Luxury</div>
     </div>
 
     <section class="hero">
-        <h1 data-aos="zoom-in">Premium Choice</h1>
-        <p>Luxury that speaks for itself.</p>
+        <p data-aos="fade-up">Handcrafted Excellence</p>
+        <h1 data-aos="fade-up" data-aos-delay="200">The 2026<br>Collection</h1>
     </section>
 
     <section class="product-section">
         <div class="product-container">
-            <div class="product-image" data-aos="fade-right"><img src="bag front .png" alt="XCLENT Bag"></div>
+            <div class="product-image" data-aos="fade-right"><img src="bag front .png" alt="XCLENT"></div>
             <div class="product-info" data-aos="fade-left">
-                <h2>The XCLENT Bag</h2>
-                <div class="price">₹1,499</div>
-                <p style="color: #aaa; margin-bottom: 20px;">Pure craftsmanship meets modern technology. It's a statement.</p>
-                <a href="https://wa.me/919560635855?text=Order%20XCLENT" class="buy-btn">ORDER ON WHATSAPP</a>
+                <h2>The XCLENT</h2>
+                <div class="price">₹1,499 <span>₹2,499</span></div>
+                <p style="color: #666; margin-bottom: 30px; font-weight: 300; letter-spacing: 1px;">A masterpiece of durability and design. Crafted for those who appreciate the finer things in life.</p>
+                <a href="https://wa.me/919560635855?text=Order%20XCLENT" class="buy-btn">Inquire on WhatsApp</a>
             </div>
         </div>
 
         <div class="product-container" style="flex-direction: row-reverse;">
-            <div class="product-image" data-aos="fade-left"><img src="GREY FRNT.png" alt="Urban Grey Bag"></div>
+            <div class="product-image" data-aos="fade-left"><img src="GREY FRNT.png" alt="Urban Grey"></div>
             <div class="product-info" data-aos="fade-right">
                 <h2>Urban Grey</h2>
-                <div class="price">₹1,199</div>
-                <p style="color: #aaa; margin-bottom: 20px;">Minimalist aesthetic with maximum storage. Perfect for urban explorers.</p>
-                <a href="https://wa.me/919560635855?text=Order%20Grey" class="buy-btn">ORDER ON WHATSAPP</a>
+                <div class="price">₹1,199 <span>₹1,999</span></div>
+                <p style="color: #666; margin-bottom: 30px; font-weight: 300; letter-spacing: 1px;">Understated luxury. The perfect companion for the modern urban minimalist.</p>
+                <a href="https://wa.me/919560635855?text=Order%20Grey" class="buy-btn">Inquire on WhatsApp</a>
             </div>
         </div>
     </section>
 
     <section class="faq-section" data-aos="fade-up">
-        <h2 style="text-align: center; margin-bottom: 40px;">FAQs</h2>
+        <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; text-align: center; margin-bottom: 60px;">Client Care</h2>
         <div class="faq-item">
-            <h3>Delivery kitne din mein hogi?</h3>
-            <p>Order ke 3-5 din ke andar aapka parcel mil jayega.</p>
+            <h3>Bespoke Delivery</h3>
+            <p>Each order is handled with care and delivered within 3-5 business days across the nation.</p>
         </div>
         <div class="faq-item">
-            <h3>Payment kaise karni hai?</h3>
-            <p>Aap WhatsApp par humse baat karke payment details le sakte hain.</p>
+            <h3>Secure Transactions</h3>
+            <p>We ensure a personal shopping experience via WhatsApp for secure and transparent orders.</p>
         </div>
     </section>
 
-    <footer><p>&copy; 2026 AZURA LUXURY | Azam</p></footer>
+    <footer style="padding: 60px; text-align: center; color: #444; letter-spacing: 3px; font-size: 0.7rem;">
+        &copy; 2026 AZURA LUXURY | CREATED FOR AZAM
+    </footer>
 
     <a href="https://wa.me/919560635855" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init();
+        AOS.init({ duration: 1200 });
 
         // Timer with Memory
         function startTimer(display) {
             let duration = 60 * 60 * 5; 
             let startTime = localStorage.getItem('azuraTimerStart');
             let now = Math.floor(Date.now() / 1000);
-
             if (startTime) {
                 let elapsed = now - parseInt(startTime);
                 duration = duration - elapsed;
             } else {
                 localStorage.setItem('azuraTimerStart', now);
             }
-
             if (duration <= 0) {
                 localStorage.setItem('azuraTimerStart', now);
                 duration = 60 * 60 * 5;
             }
-
             setInterval(function () {
                 let h = Math.floor(duration / 3600);
                 let m = Math.floor((duration % 3600) / 60);
                 let s = Math.floor(duration % 60);
-                h = h < 10 ? "0" + h : h;
-                m = m < 10 ? "0" + m : m;
-                s = s < 10 ? "0" + s : s;
-                display.textContent = h + "h " + m + "m " + s + "s";
+                h = h < 10 ? "0" + h : h; m = m < 10 ? "0" + m : m; s = s < 10 ? "0" + s : s;
+                display.textContent = h + ":" + m + ":" + s;
                 if (--duration < 0) {
                     localStorage.setItem('azuraTimerStart', Math.floor(Date.now() / 1000));
                     duration = 60 * 60 * 5;
@@ -179,20 +201,18 @@
             showSalesPopup();
         };
 
-        const names = ["Rahul", "Sameer", "Adnan", "Arjun", "Zaid", "Priya", "Vikram", "Aman", "Sohail", "Rohan", "Kabir", "Ishaan", "Faizan", "Yash", "Sahil", "Farhan", "Umar", "Tushar", "Anas", "Armaan", "Rehan", "Saif"];
-        const cities = ["Delhi", "Mumbai", "Lucknow", "Patna", "Bangalore", "Noida", "Kolkata", "Hyderabad", "Pune", "Ahmedabad", "Jaipur", "Chandigarh", "Indore", "Bhopal", "Surat", "Kanpur", "Nagpur", "Meerut", "Gaziabad", "Agra"];
-        const productsList = ["XCLENT Bag", "Urban Grey Bag"];
+        const names = ["Adnan", "Zaid", "Kabir", "Arjun", "Sameer", "Faizan", "Yash", "Rohan", "Vikram", "Umar", "Anas", "Armaan", "Rehan", "Saif", "Sahil", "Tushar"];
+        const cities = ["Mumbai", "South Delhi", "Bangalore", "Chandigarh", "Noida", "Pune", "Hyderabad", "Jaipur"];
 
         function showSalesPopup() {
             setInterval(() => {
                 const name = names[Math.floor(Math.random() * names.length)];
                 const city = cities[Math.floor(Math.random() * cities.length)];
-                const product = productsList[Math.floor(Math.random() * productsList.length)];
-                document.getElementById('popup-content').innerHTML = `<b>${name}</b> from ${city} just bought <b>${product}</b>!`;
+                document.getElementById('popup-content').innerHTML = `<b>${name}</b> from ${city} reserved an item.`;
                 const popup = document.getElementById('sales-popup');
                 popup.classList.add('show');
-                setTimeout(() => { popup.classList.remove('show'); }, 4000);
-            }, 12000);
+                setTimeout(() => { popup.classList.remove('show'); }, 4500);
+            }, 15000);
         }
     </script>
 </body>
