@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Azura Premium | Official Store</title>
+    <title>Azura Premium | Limited Offer</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -13,162 +13,187 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
         body { background-color: #0f0f0f; color: #ffffff; overflow-x: hidden; scroll-behavior: smooth; }
 
-        /* Navbar */
         nav { 
-            padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; 
+            padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; 
             position: fixed; width: 100%; z-index: 1000; 
             background: rgba(15, 15, 15, 0.8); backdrop-filter: blur(15px);
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
-        .logo { font-weight: 600; font-size: 1.5rem; letter-spacing: 4px; color: #fff; }
+        .logo { font-weight: 600; font-size: 1.5rem; letter-spacing: 4px; }
 
-        /* Hero */
+        .timer-banner {
+            background: #ff3e3e; color: white; padding: 10px; text-align: center;
+            position: relative; top: 60px; font-weight: bold; z-index: 999;
+        }
+
         .hero { 
-            height: 90vh; display: flex; flex-direction: column; justify-content: center; 
-            align-items: center; text-align: center; background: radial-gradient(circle at center, #1a1a1a 0%, #0f0f0f 100%);
+            height: 60vh; display: flex; flex-direction: column; justify-content: center; 
+            align-items: center; text-align: center; padding-top: 100px;
         }
-        .hero h1 { font-size: clamp(2.5rem, 10vw, 5rem); font-weight: 600; text-transform: uppercase; }
-        .hero p { color: #25d366; font-weight: 600; letter-spacing: 2px; margin-top: 10px; }
+        .hero h1 { font-size: clamp(2.5rem, 10vw, 5rem); text-transform: uppercase; }
 
-        /* Trust Icons Section */
-        .trust-bar {
-            display: flex; justify-content: center; gap: 40px; padding: 40px 5%;
-            background: #151515; flex-wrap: wrap; border-bottom: 1px solid #222;
+        /* Sales Pop-up */
+        #sales-popup {
+            position: fixed; bottom: 20px; left: 20px; background: white; color: #333;
+            padding: 12px 20px; border-radius: 10px; display: flex; align-items: center;
+            gap: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); z-index: 2000;
+            transform: translateY(150%); transition: 0.5s ease-in-out;
         }
-        .trust-item { text-align: center; min-width: 150px; }
-        .trust-item i { font-size: 1.5rem; color: #25d366; margin-bottom: 10px; }
-        .trust-item p { font-size: 0.8rem; color: #aaa; text-transform: uppercase; }
+        #sales-popup.show { transform: translateY(0); }
+        .popup-icon { color: #25d366; font-size: 1.2rem; }
+        .popup-text { font-size: 0.85rem; font-weight: 500; }
 
         /* Product Section */
-        .product-section { padding: 80px 5%; }
+        .product-section { padding: 50px 5%; }
         .product-container { 
             display: flex; align-items: center; justify-content: space-around; 
-            max-width: 1200px; margin: 0 auto 150px auto; gap: 60px;
+            max-width: 1200px; margin: 0 auto 120px auto; gap: 40px;
         }
-        .product-image { flex: 1; text-align: center; position: relative; }
-        .product-image img { 
-            width: 100%; max-width: 400px; 
-            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5));
-            border-radius: 20px; animation: floatGlow 5s ease-in-out infinite;
-        }
+        .product-image img { width: 100%; max-width: 380px; border-radius: 20px; animation: float 4s infinite ease-in-out; }
         
-        @keyframes floatGlow {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
 
-        .discount-tag {
-            position: absolute; top: 10%; left: 10%; background: #ff3e3e; color: #fff;
-            padding: 5px 15px; border-radius: 50px; font-weight: bold; font-size: 0.9rem;
-        }
-
-        .product-info { flex: 1; padding: 20px; }
-        .price { font-size: 2rem; font-weight: 600; color: #fff; margin: 15px 0; }
-        .price span { font-size: 1.2rem; text-decoration: line-through; color: #666; margin-left: 10px; }
-
+        .price { font-size: 2rem; color: #25d366; margin-bottom: 20px; font-weight: 600; }
         .buy-btn { 
-            display: inline-flex; align-items: center; padding: 18px 40px; 
-            background: #fff; color: #000; text-decoration: none; 
-            font-weight: 600; transition: 0.4s; text-transform: uppercase;
+            display: inline-flex; align-items: center; padding: 15px 35px; 
+            background: #fff; color: #000; text-decoration: none; font-weight: 600;
+            transition: 0.3s;
         }
         .buy-btn:hover { background: #25d366; color: #fff; }
 
-        /* Review Section */
-        .reviews { padding: 80px 5%; background: #0a0a0a; text-align: center; }
-        .review-grid { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 40px; }
-        .review-card { background: #151515; padding: 30px; border-radius: 15px; width: 300px; text-align: left; }
-        .stars { color: #ffb400; margin-bottom: 10px; }
+        /* FAQ */
+        .faq-section { padding: 80px 10%; background: #151515; }
+        .faq-item { margin-bottom: 20px; border-bottom: 1px solid #333; padding-bottom: 15px; }
+        .faq-item h3 { color: #25d366; font-size: 1.1rem; margin-bottom: 10px; }
+        .faq-item p { color: #aaa; font-size: 0.9rem; }
 
-        /* Footer */
-        footer { padding: 60px; text-align: center; border-top: 1px solid #222; color: #666; }
+        footer { padding: 40px; text-align: center; border-top: 1px solid #222; color: #666; }
 
         .whatsapp-float {
             position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white;
             width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center;
             justify-content: center; font-size: 32px; z-index: 1000;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
 
-        @media (max-width: 768px) {
-            .product-container { flex-direction: column !important; text-align: center; }
-            .hero h1 { font-size: 3rem; }
+        @media (max-width: 768px) { 
+            .product-container { flex-direction: column !important; text-align: center; margin-bottom: 80px; } 
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="logo">AZURA.</div>
-        <div style="font-weight: 600;">9560635855</div>
-    </nav>
+    <nav><div class="logo">AZURA.</div></nav>
+
+    <div class="timer-banner">
+        🔥 LIMITED OFFER ENDS IN: <span id="countdown">00:00:00</span>
+    </div>
+
+    <div id="sales-popup">
+        <div class="popup-icon"><i class="fas fa-shopping-cart"></i></div>
+        <div class="popup-text" id="popup-content">Loading sales...</div>
+    </div>
 
     <section class="hero">
-        <h1 data-aos="fade-down">Premium Luxury</h1>
-        <p data-aos="fade-up" data-aos-delay="400">EXCLUSIVE 2026 COLLECTION</p>
+        <h1 data-aos="zoom-in">Premium Choice</h1>
+        <p>Luxury that speaks for itself.</p>
     </section>
-
-    <div class="trust-bar" data-aos="fade-up">
-        <div class="trust-item"><i class="fas fa-shipping-fast"></i><p>Free Delivery</p></div>
-        <div class="trust-item"><i class="fas fa-shield-alt"></i><p>Premium Quality</p></div>
-        <div class="trust-item"><i class="fas fa-undo"></i><p>Easy Returns</p></div>
-        <div class="trust-item"><i class="fas fa-headset"></i><p>24/7 Support</p></div>
-    </div>
 
     <section class="product-section">
         <div class="product-container">
-            <div class="product-image" data-aos="zoom-in-right">
-                <span class="discount-tag">Save 60%</span>
-                <img src="bag front .png" alt="XCLENT BAG">
-            </div>
+            <div class="product-image" data-aos="fade-right"><img src="bag front .png" alt="XCLENT Bag"></div>
             <div class="product-info" data-aos="fade-left">
                 <h2>The XCLENT Bag</h2>
-                <div class="price">₹499<span>₹1,299</span></div>
-                <p>Limited edition heavy-duty bag for those who don't compromise on style or strength.</p>
-                <a href="https://wa.me/919560635855?text=Order%20XCLENT%20Bag" class="buy-btn"><i class="fab fa-whatsapp"></i> Buy on WhatsApp</a>
+                <div class="price">₹1,499</div>
+                <p style="color: #aaa; margin-bottom: 20px;">Pure craftsmanship meets modern technology. It's a statement.</p>
+                <a href="https://wa.me/919560635855?text=Order%20XCLENT" class="buy-btn">ORDER ON WHATSAPP</a>
             </div>
         </div>
 
         <div class="product-container" style="flex-direction: row-reverse;">
-            <div class="product-image" data-aos="zoom-in-left">
-                <span class="discount-tag">Best Seller</span>
-                <img src="GREY FRNT.png" alt="Urban Grey">
-            </div>
+            <div class="product-image" data-aos="fade-left"><img src="GREY FRNT.png" alt="Urban Grey Bag"></div>
             <div class="product-info" data-aos="fade-right">
-                <h2>Urban Grey Carry</h2>
-                <div class="price">₹499 <span>₹1,299</span></div>
-                <p>The perfect minimalist companion for your everyday urban travel. Light-weight and durable.</p>
-                <a href="https://wa.me/919560635855?text=Order%20Urban%20Grey%20Bag" class="buy-btn"><i class="fab fa-whatsapp"></i> Buy on WhatsApp</a>
+                <h2>Urban Grey</h2>
+                <div class="price">₹1,199</div>
+                <p style="color: #aaa; margin-bottom: 20px;">Minimalist aesthetic with maximum storage. Perfect for urban explorers.</p>
+                <a href="https://wa.me/919560635855?text=Order%20Grey" class="buy-btn">ORDER ON WHATSAPP</a>
             </div>
         </div>
     </section>
 
-    <section class="reviews" data-aos="fade-up">
-        <h2>Customer Love</h2>
-        <div class="review-grid">
-            <div class="review-card">
-                <div class="stars">★★★★★</div>
-                <p>"Best quality bag I've ever used. Delivery was very fast!"</p>
-                <strong style="display:block; margin-top:15px;">- Rahul S.</strong>
-            </div>
-            <div class="review-card">
-                <div class="stars">★★★★★</div>
-                <p>"The grey bag is so light and looks very premium. Value for money."</p>
-                <strong style="display:block; margin-top:15px;">- Sameer Khan</strong>
-            </div>
+    <section class="faq-section" data-aos="fade-up">
+        <h2 style="text-align: center; margin-bottom: 40px;">FAQs</h2>
+        <div class="faq-item">
+            <h3>Delivery kitne din mein hogi?</h3>
+            <p>Order ke 3-5 din ke andar aapka parcel mil jayega.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Payment kaise karni hai?</h3>
+            <p>Aap WhatsApp par humse baat karke payment details le sakte hain.</p>
         </div>
     </section>
 
-    <footer>
-        <p>&copy; 2026 AZURA LUXURY | Powered by Azam</p>
-    </footer>
+    <footer><p>&copy; 2026 AZURA LUXURY | Azam</p></footer>
 
-    <a href="https://wa.me/919560635855" class="whatsapp-float">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <a href="https://wa.me/919560635855" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1000, once: false, mirror: true });
+        AOS.init();
+
+        // Timer with Memory
+        function startTimer(display) {
+            let duration = 60 * 60 * 5; 
+            let startTime = localStorage.getItem('azuraTimerStart');
+            let now = Math.floor(Date.now() / 1000);
+
+            if (startTime) {
+                let elapsed = now - parseInt(startTime);
+                duration = duration - elapsed;
+            } else {
+                localStorage.setItem('azuraTimerStart', now);
+            }
+
+            if (duration <= 0) {
+                localStorage.setItem('azuraTimerStart', now);
+                duration = 60 * 60 * 5;
+            }
+
+            setInterval(function () {
+                let h = Math.floor(duration / 3600);
+                let m = Math.floor((duration % 3600) / 60);
+                let s = Math.floor(duration % 60);
+                h = h < 10 ? "0" + h : h;
+                m = m < 10 ? "0" + m : m;
+                s = s < 10 ? "0" + s : s;
+                display.textContent = h + "h " + m + "m " + s + "s";
+                if (--duration < 0) {
+                    localStorage.setItem('azuraTimerStart', Math.floor(Date.now() / 1000));
+                    duration = 60 * 60 * 5;
+                }
+            }, 1000);
+        }
+
+        window.onload = function () {
+            startTimer(document.querySelector('#countdown'));
+            showSalesPopup();
+        };
+
+        const names = ["Rahul", "Sameer", "Adnan", "Arjun", "Zaid", "Priya", "Vikram", "Aman", "Sohail", "Rohan", "Kabir", "Ishaan", "Faizan", "Yash", "Sahil", "Farhan", "Umar", "Tushar", "Anas", "Armaan", "Rehan", "Saif"];
+        const cities = ["Delhi", "Mumbai", "Lucknow", "Patna", "Bangalore", "Noida", "Kolkata", "Hyderabad", "Pune", "Ahmedabad", "Jaipur", "Chandigarh", "Indore", "Bhopal", "Surat", "Kanpur", "Nagpur", "Meerut", "Gaziabad", "Agra"];
+        const productsList = ["XCLENT Bag", "Urban Grey Bag"];
+
+        function showSalesPopup() {
+            setInterval(() => {
+                const name = names[Math.floor(Math.random() * names.length)];
+                const city = cities[Math.floor(Math.random() * cities.length)];
+                const product = productsList[Math.floor(Math.random() * productsList.length)];
+                document.getElementById('popup-content').innerHTML = `<b>${name}</b> from ${city} just bought <b>${product}</b>!`;
+                const popup = document.getElementById('sales-popup');
+                popup.classList.add('show');
+                setTimeout(() => { popup.classList.remove('show'); }, 4000);
+            }, 12000);
+        }
     </script>
 </body>
 </html>
