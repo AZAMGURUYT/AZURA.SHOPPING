@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Azura Premium | The Elite Collection</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
@@ -14,111 +14,121 @@
             --gold: #b38b45;
             --premium-white: #ffffff;
             --text-dark: #1a1a1a;
-            --glass: rgba(255, 255, 255, 0.85);
+            --glass: rgba(255, 255, 255, 0.9);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; cursor: none; }
-        
-        /* FIX: Background Video hamesha fixed rahegi */
         body { background: #000; color: var(--text-dark); overflow-x: hidden; }
 
         #bg-video-container {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             z-index: -2; overflow: hidden;
         }
-        
-        #bg-video-container video {
-            width: 100%; height: 100%; object-fit: cover;
-            filter: brightness(0.6); /* Thoda dark taaki white text dikhe */
-        }
+        #bg-video-container video { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.6); }
 
-        /* Overlay taaki scroll karte waqt content readable ho */
         .global-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(255, 255, 255, 0.7); /* Isse white premium look aayega */
-            z-index: -1; opacity: 0; transition: 1.5s;
+            background: rgba(255, 255, 255, 0.8); z-index: -1; opacity: 0; transition: 1.5s;
         }
 
-        /* --- Custom Cursor --- */
         #cursor {
             width: 25px; height: 25px; border: 1px solid var(--gold); border-radius: 50%;
             position: fixed; pointer-events: none; z-index: 10000; mix-blend-mode: difference;
             transition: transform 0.1s ease;
         }
 
-        /* --- Cinematic Intro --- */
+        /* --- INTRO SCREEN (NO CHANGES) --- */
         #intro-screen {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             z-index: 5000; display: flex; flex-direction: column;
             justify-content: center; align-items: center; transition: 1.5s cubic-bezier(0.8, 0, 0.2, 1);
         }
-
         .intro-content { position: relative; z-index: 5001; text-align: center; }
         .intro-content h1 { 
-            font-family: 'Playfair Display', serif; font-size: clamp(4rem, 15vw, 8rem); 
-            letter-spacing: 25px; color: white; margin-bottom: 20px; text-transform: uppercase;
-            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            font-family: 'Playfair Display', serif; font-size: clamp(3rem, 15vw, 8rem); 
+            letter-spacing: 20px; color: white; margin-bottom: 20px; text-transform: uppercase;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.5); font-weight: 900;
         }
-
         .explore-btn {
             padding: 18px 60px; background: transparent; border: 1px solid white;
             color: white; letter-spacing: 8px; cursor: pointer; transition: 0.5s; text-transform: uppercase;
             backdrop-filter: blur(5px);
         }
-        .explore-btn:hover { background: white; color: black; letter-spacing: 12px; }
+        .explore-btn:hover { background: white; color: black; }
 
-        /* --- Main Content --- */
+        /* --- MAIN SITE UPGRADES (AFTER ENTER EXPERIENCE) --- */
         #main-site { opacity: 0; visibility: hidden; transition: 1.5s ease; }
 
         nav { 
-            padding: 25px 8%; display: flex; justify-content: space-between; align-items: center; 
+            padding: 20px 5%; display: flex; justify-content: center; align-items: center; 
             position: fixed; width: 100%; z-index: 1000; background: var(--glass);
-            backdrop-filter: blur(15px); border-bottom: 1px solid rgba(179, 139, 69, 0.1);
+            backdrop-filter: blur(15px); border-bottom: 1px solid rgba(0,0,0,0.05);
         }
-        .logo { font-family: 'Playfair Display', serif; font-size: 1.8rem; letter-spacing: 8px; font-weight: 800; }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; letter-spacing: 5px; font-weight: 900; }
 
         .timer-banner { 
-            background: #1a1a1a; color: var(--gold); padding: 12px; text-align: center; 
-            position: relative; top: 88px; font-size: 0.8rem; letter-spacing: 3px; z-index: 900;
+            background: #1a1a1a; color: var(--gold); padding: 10px; text-align: center; 
+            position: relative; top: 68px; font-size: 0.7rem; letter-spacing: 2px; z-index: 900;
         }
 
-        .hero { height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
-        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 12vw, 6.5rem); line-height: 1; margin-bottom: 20px; color: #000; }
-        .hero p { color: var(--gold); letter-spacing: 8px; text-transform: uppercase; font-size: 0.9rem; margin-bottom: 15px; }
+        /* Hero Section Fix */
+        .hero { min-height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 40px 20px; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 10vw, 5.5rem); line-height: 1.1; margin-bottom: 20px; color: #000; font-weight: 900; }
+        .hero p { color: var(--gold); letter-spacing: 5px; text-transform: uppercase; font-size: 0.8rem; margin-bottom: 10px; }
 
-        .product-section { padding: 100px 8%; background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(5px); }
-        .product-container { display: flex; align-items: center; justify-content: space-between; max-width: 1200px; margin: 0 auto 150px auto; gap: 60px; }
+        /* Mobile Friendly Product Section */
+        .product-section { padding: 60px 5%; }
+        .product-container { 
+            display: flex; flex-direction: column; align-items: center; 
+            max-width: 1100px; margin: 0 auto 80px auto; gap: 40px; 
+            background: rgba(255,255,255,0.5); padding: 30px; border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
         
-        .product-image img { 
-            width: 100%; max-width: 450px; border-radius: 20px; 
-            filter: drop-shadow(0 30px 60px rgba(0,0,0,0.15)); 
-            transition: 0.5s;
+        /* Desktop par side-by-side ho jayega */
+        @media (min-width: 992px) {
+            .product-container { flex-direction: row; padding: 60px; gap: 80px; }
+            .product-container.reverse { flex-direction: row-reverse; }
+            .product-info { text-align: left; }
+            .logo { font-size: 1.8rem; letter-spacing: 8px; }
         }
-        .product-image img:hover { transform: scale(1.03); }
+
+        .product-image { width: 100%; display: flex; justify-content: center; }
+        .product-image img { 
+            width: 100%; max-width: 400px; border-radius: 15px; 
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.15)); 
+        }
+
+        .product-info { text-align: center; width: 100%; }
+        .product-info h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3.5rem); margin: 10px 0; font-weight: 900; }
+
+        .price-tag { font-size: 2rem; color: #000; margin: 15px 0; font-weight: 600; }
+        .old-price { font-size: 1rem; text-decoration: line-through; color: #999; font-weight: 400; }
 
         .buy-btn { 
-            display: inline-block; padding: 20px 50px; background: #000; color: #fff; 
+            display: inline-block; padding: 15px 40px; background: #000; color: #fff; 
             text-decoration: none; font-size: 0.8rem; letter-spacing: 3px; font-weight: 600; 
-            text-transform: uppercase; transition: 0.4s; 
+            text-transform: uppercase; transition: 0.4s; width: 100%; max-width: 300px;
         }
-        .buy-btn:hover { background: var(--gold); transform: translateY(-5px); box-shadow: 0 10px 20px rgba(179,139,69,0.3); }
 
         #sales-popup { 
-            position: fixed; bottom: 30px; left: 30px; background: #fff; padding: 20px; 
-            border-radius: 12px; border: 1px solid #eee; z-index: 2000; transform: translateX(-180%); 
-            transition: 0.8s cubic-bezier(0.23, 1, 0.32, 1); box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(200%);
+            background: #fff; padding: 15px 25px; border-radius: 50px; width: 90%; max-width: 300px;
+            text-align: center; z-index: 2000; transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid #eee;
         }
-        #sales-popup.show { transform: translateX(0); }
+        #sales-popup.show { transform: translateX(-50%) translateY(0); }
 
         .whatsapp-float { 
-            position: fixed; bottom: 40px; right: 40px; background: #25d366; color: white; 
-            width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; 
-            justify-content: center; font-size: 28px; z-index: 1000; box-shadow: 0 15px 30px rgba(37,211,102,0.3); 
-            transition: 0.3s;
+            position: fixed; bottom: 30px; right: 20px; background: #25d366; color: white; 
+            width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; 
+            justify-content: center; font-size: 24px; z-index: 1000; box-shadow: 0 10px 20px rgba(37,211,102,0.3); 
         }
-        .whatsapp-float:hover { transform: scale(1.1) rotate(15deg); }
 
-        footer { padding: 80px; text-align: center; color: #1a1a1a; letter-spacing: 5px; font-size: 0.8rem; font-weight: 600; opacity: 0.6; }
+        footer { padding: 40px 20px; text-align: center; color: #1a1a1a; letter-spacing: 3px; font-size: 0.7rem; font-weight: 600; opacity: 0.5; line-height: 2; }
+
+        /* Mouse hides on mobile */
+        @media (max-width: 768px) { #cursor { display: none; } * { cursor: auto; } }
     </style>
 </head>
 <body>
@@ -135,7 +145,7 @@
     <section id="intro-screen">
         <div class="intro-content">
             <h1 data-aos="zoom-out" data-aos-duration="2000">AZURA</h1>
-            <p style="color: white; letter-spacing: 15px; margin-bottom: 40px; font-weight: 300; opacity: 0.9;">THE 2026 ELITE SERIES</p>
+            <p style="color: white; letter-spacing: 15px; margin-bottom: 40px; font-weight: 300; opacity: 0.9; font-size: 0.8rem;">THE 2026 ELITE SERIES</p>
             <button class="explore-btn" onclick="startExperience()">Enter Experience</button>
         </div>
     </section>
@@ -144,7 +154,7 @@
         <nav><div class="logo">AZURA</div></nav>
 
         <div class="timer-banner">
-            ROYAL COLLECTION | LIMITED TIME LEFT: <span id="countdown">00:00:00</span>
+            ROYAL COLLECTION | <span id="countdown">00:00:00</span> LEFT
         </div>
 
         <section class="hero">
@@ -153,39 +163,40 @@
         </section>
 
         <section class="product-section">
-            <div class="product-container">
-                <div class="product-image" data-aos="fade-right">
+            <div class="product-container" data-aos="fade-up">
+                <div class="product-image">
                     <img src="bag front .png" alt="XCLENT">
                 </div>
-                <div class="product-info" data-aos="fade-left">
-                    <p style="color: var(--gold); letter-spacing: 3px; font-weight: 600;">THE MASTERPIECE</p>
-                    <h2 style="font-family: 'Playfair Display', serif; font-size: 3.5rem; margin: 10px 0;">The XCLENT</h2>
-                    <div style="font-size: 2.2rem; color: #000; margin: 20px 0;">₹1,499 <span style="font-size: 1rem; text-decoration: line-through; color: #999;">₹2,499</span></div>
-                    <p style="color: #444; margin-bottom: 40px; line-height: 1.8;">Experience world-class durability fused with royal gold aesthetics. A bag not just for carrying, but for making a statement.</p>
+                <div class="product-info">
+                    <p style="color: var(--gold); letter-spacing: 3px; font-weight: 600; font-size: 0.7rem;">THE MASTERPIECE</p>
+                    <h2>The XCLENT</h2>
+                    <div class="price-tag">₹1,499 <span class="old-price">₹2,499</span></div>
+                    <p style="color: #444; margin-bottom: 30px; line-height: 1.6; font-size: 0.9rem;">Experience world-class durability fused with royal gold aesthetics. A bag made for the elite.</p>
                     <a href="https://wa.me/919560635855?text=Order%20XCLENT" class="buy-btn">Acquire Now</a>
                 </div>
             </div>
 
-            <div class="product-container" style="flex-direction: row-reverse;">
-                <div class="product-image" data-aos="fade-left">
+            <div class="product-container reverse" data-aos="fade-up">
+                <div class="product-image">
                     <img src="GREY FRNT.png" alt="Urban Grey">
                 </div>
-                <div class="product-info" data-aos="fade-right">
-                    <p style="color: var(--gold); letter-spacing: 3px; font-weight: 600;">URBAN SERIES</p>
-                    <h2 style="font-family: 'Playfair Display', serif; font-size: 3.5rem; margin: 10px 0;">Urban Grey</h2>
-                    <div style="font-size: 2.2rem; color: #000; margin: 20px 0;">₹1,199 <span style="font-size: 1rem; text-decoration: line-through; color: #999;">₹1,999</span></div>
-                    <p style="color: #444; margin-bottom: 40px; line-height: 1.8;">Minimalist design for the modern executive. Crafted for comfort, styled for the elite.</p>
+                <div class="product-info">
+                    <p style="color: var(--gold); letter-spacing: 3px; font-weight: 600; font-size: 0.7rem;">URBAN SERIES</p>
+                    <h2>Urban Grey</h2>
+                    <div class="price-tag">₹1,199 <span class="old-price">₹1,999</span></div>
+                    <p style="color: #444; margin-bottom: 30px; line-height: 1.6; font-size: 0.9rem;">Minimalist design for the modern executive. Crafted for comfort, styled for luxury.</p>
                     <a href="https://wa.me/919560635855?text=Order%20Grey" class="buy-btn">Acquire Now</a>
                 </div>
             </div>
         </section>
 
         <div id="sales-popup">
-            <div id="popup-content" style="font-size: 0.9rem;"><b>Premium Quality</b> Verified</div>
+            <div id="popup-content" style="font-size: 0.8rem;"><i class="fas fa-check-circle" style="color: var(--gold);"></i> <b>Premium Quality</b> Verified</div>
         </div>
 
         <footer>
-            &copy; 2026 AZURA LUXURY | DESIGNED FOR AZAM GURU YT
+            &copy; 2026 AZURA LUXURY<br>
+            DESIGNED FOR AZAM GURU YT
         </footer>
 
         <a href="https://wa.me/919560635855" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
@@ -193,7 +204,8 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1500, once: true });
+        // AOS Init with shorter duration for mobile snappiness
+        AOS.init({ duration: 1000, once: true });
 
         // Cursor logic
         const cursor = document.getElementById('cursor');
@@ -202,7 +214,7 @@
             cursor.style.top = e.clientY + 'px';
         });
 
-        // FIX: Smooth 4K Entrance
+        // Experience Transition
         function startExperience() {
             const intro = document.getElementById('intro-screen');
             const main = document.getElementById('main-site');
@@ -215,30 +227,31 @@
                 intro.style.display = 'none';
                 main.style.visibility = 'visible';
                 main.style.opacity = '1';
-                overlay.style.opacity = '1'; // Ab white glass effect piche aa jayega
+                overlay.style.opacity = '1';
+                window.scrollTo(0, 0); // Reset scroll on start
             }, 1000);
         }
 
-        // Timer logic
+        // Timer
         function startTimer(display) {
             let duration = 60 * 60 * 5; 
             setInterval(function () {
                 let h = Math.floor(duration / 3600);
                 let m = Math.floor((duration % 3600) / 60);
                 let s = Math.floor(duration % 60);
-                h = h < 10 ? "0" + h : h; m = m < 10 ? "0" + m : m; s = s < 10 ? "0" + s : s;
-                display.textContent = h + ":" + m + ":" + s;
+                display.textContent = (h<10?"0"+h:h) + ":" + (m<10?"0"+m:m) + ":" + (s<10?"0"+s:s);
                 if (--duration < 0) duration = 60 * 60 * 5;
             }, 1000);
         }
 
         window.onload = () => {
             startTimer(document.querySelector('#countdown'));
-            setInterval(() => {
+            // Popup delay
+            setTimeout(() => {
                 const popup = document.getElementById('sales-popup');
                 popup.classList.add('show');
                 setTimeout(() => { popup.classList.remove('show'); }, 4000);
-            }, 12000);
+            }, 5000);
         };
     </script>
 </body>
